@@ -48,14 +48,14 @@ const _nav = [
     component: CNavItem,
     name: 'Lideres',
     type:'private',
-    to: '/lideres/all',
+    to: '/lideres',
     icon: <CIcon icon={cilClipboard} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
     name: 'Cidadões',
     type:'public',
-    to: '/cidadoes/all',
+    to: '/cidadoes',
     icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
   },
   {
@@ -74,7 +74,7 @@ const _nav = [
     component: CNavItem,
     name: 'Agendamentos',
     type:'public',
-    to: '/servicos/agendamentos',
+    to: '/agendamentos',
     icon: <CIcon icon={cilCalendar} customClassName="nav-icon" />,
   }
 ]
