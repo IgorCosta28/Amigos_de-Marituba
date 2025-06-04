@@ -32,7 +32,7 @@ const AppContent = () => {
           <Route path="*" element={
             // level == 'adm' ?
             // <Navigate to="/dashboard" replace /> :
-            <Navigate to="/servicos/agendamentos" replace />
+            <Navigate to="/agendamentos" replace />
           } /> 
           
         </Routes>
