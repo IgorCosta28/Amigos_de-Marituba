@@ -9,12 +9,17 @@ const TotalAgendamentos = () => {
     const [totalPresencas, setTotalPresencas] = useState(0)
 
     const api = async () => {
-        const {data} = await instanceAxios.get('/report/dashboard/schedulings')
+        try{
+             const {data} = await instanceAxios.get('/report/dashboard/schedulings')
 
-        setTotalAgendamentos(data[0] ? data[0].total : 0)
-        setTotalAusencias(data[0] ? data[0].absence : 0)
-        setTotalPresencas(data[0] ? data[0].attendance : 0)
+            setTotalAgendamentos(data[0] ? data[0].total : 0)
+            setTotalAusencias(data[0] ? data[0].absence : 0)
+            setTotalPresencas(data[0] ? data[0].attendance : 0)
 
+        }catch{
+            localStorage.clear()
+        }
+       
     }
 
     useEffect(() => {
