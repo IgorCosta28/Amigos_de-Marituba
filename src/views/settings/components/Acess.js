@@ -107,6 +107,7 @@ const Acess = () => {
                                 aria-label="Floating label select example"
                                 {...register('level', { required: true })}
                             >
+                                <option value={''}>Selecionar Nivel</option>
                                 <option value={'adm'}>Administrativo</option>
                                 <option value={'usu'}>Usuário</option>
 
