@@ -36,8 +36,13 @@ const GraficoLideres = () => {
     }
 
     const api = async () => {
-        const data_leaders = await instanceAxios.get('/report/dashboard/leaders')
-        setTotalLider(data_leaders.data)
+        try{
+            const data_leaders = await instanceAxios.get('/report/dashboard/leaders')
+            setTotalLider(data_leaders.data)
+        }catch{
+            localStorage.clear()
+        }
+        
 
     }
 
