@@ -8,9 +8,11 @@ import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
 import DoNotDisturbAltIcon from '@mui/icons-material/DoNotDisturbAlt';
 import { CBadge, CButton, CCollapse, CFormLabel, CFormTextarea, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle, CPopover } from "@coreui/react";
+import { useSelector } from "react-redux";
 import { formatDate } from "../../../../utils/Utils";
 import { fomartCPF, handleFomartPhone } from "../../../regencia/Cards/Utils/FormatInput";
 import { number } from "prop-types";
+
 
 
 const CardAgendamento = ({ data, deleteAgendamento, confimeAgendamento, regulacao }) => {
@@ -27,6 +29,8 @@ const CardAgendamento = ({ data, deleteAgendamento, confimeAgendamento, regulaca
     const [textArea, setTextArea] = useState('')
 
     const [menuDateResender, setMenuDateResender] = useState(true)
+
+    const user = useSelector((state) => state.user)
 
     const open = Boolean(anchorEl);
 
@@ -170,21 +174,25 @@ const CardAgendamento = ({ data, deleteAgendamento, confimeAgendamento, regulaca
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                {
-                    menuDateResender ? (
-                        <>
+                // {
+                //     menuDateResender ? (
+                //         <>
                             <MenuItem onClick={handleMenuConfim}>
                                 <CheckCircleIcon sx={{ marginRight: 1 }} />
                                 Presente
                             </MenuItem>
+                        {
+                            user.user.level == 'adm' && 
                             <MenuItem onClick={handleMenuDelete}>
                                 <DeleteIcon sx={{ marginRight: 1 }} />
                                 Deletar
                             </MenuItem>
-                        </>
+                        }
+                            
+                //         </>
 
-                    ):''
-                }
+                //     ):''
+                // }
                 {
                     data.regulation ? (
                         <MenuItem onClick={handleMenuRegulacaoRemover}>
