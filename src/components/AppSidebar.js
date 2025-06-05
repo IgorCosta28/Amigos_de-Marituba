@@ -37,7 +37,7 @@ const AppSidebar = () => {
 
       
         <CSidebarBrand to="/">
-          <CImage fluid src={import.meta.VITE_URL_API +'/logo.ico'} width={60} height={60}/>
+          <CImage fluid src={'/logo.ico'} width={60} height={60}/>
           {/* <CIcon customClassName="sidebar-brand-full" height={32} />
           <CIcon customClassName="sidebar-brand-narrow"  height={32} /> */}
         </CSidebarBrand>
