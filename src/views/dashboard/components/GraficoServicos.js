@@ -72,9 +72,15 @@ const GraficoServicos = () => {
 
 
     const api = async () => {
-        const grafic_services = await instanceAxios.get('/report/dashboard/grafic')
-        setGraficService(grafic_services.data)
 
+        try{
+            const grafic_services = await instanceAxios.get('/report/dashboard/grafic')
+            setGraficService(grafic_services.data)
+
+        }catch{
+            localStorage.clear()
+        }
+        
     }
 
     useEffect(() => {
