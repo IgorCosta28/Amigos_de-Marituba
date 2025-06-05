@@ -174,25 +174,21 @@ const CardAgendamento = ({ data, deleteAgendamento, confimeAgendamento, regulaca
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                // {
-                //     menuDateResender ? (
-                //         <>
-                            <MenuItem onClick={handleMenuConfim}>
-                                <CheckCircleIcon sx={{ marginRight: 1 }} />
-                                Presente
-                            </MenuItem>
-                        {
-                            user.user.level == 'adm' && 
-                            <MenuItem onClick={handleMenuDelete}>
-                                <DeleteIcon sx={{ marginRight: 1 }} />
-                                Deletar
-                            </MenuItem>
-                        }
-                            
-                //         </>
+              
+                <MenuItem onClick={handleMenuConfim}>
+                    <CheckCircleIcon sx={{ marginRight: 1 }} />
+                    Presente
+                </MenuItem>
 
-                //     ):''
-                // }
+                {
+                    user.user.level == 'adm' && 
+                    <MenuItem onClick={handleMenuDelete}>
+                        <DeleteIcon sx={{ marginRight: 1 }} />
+                        Deletar
+                    </MenuItem>
+                }
+                            
+               
                 {
                     data.regulation ? (
                         <MenuItem onClick={handleMenuRegulacaoRemover}>
