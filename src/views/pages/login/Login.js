@@ -111,7 +111,7 @@ const Login = () => {
               <CCard className="text-white bg-primary" style={{ width: '44%', paddingTop: 10 }}>
                 <CCardBody className="text-center">
                   <div>
-                    <CImage fluid src={import.meta.VITE_URL_API +'/logo.ico'} width={180} height={170} style={{ marginBottom: 3 }} />
+                    <CImage fluid src={'/logo.ico'} width={180} height={170} style={{ marginBottom: 3 }} />
                     <p>
                       Projeto Amigos de Marituba, é uma projeto apoiado pela uzina da paz de marituba
                     </p>
