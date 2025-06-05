@@ -84,7 +84,7 @@ const CardAgendamento = ({ data, deleteAgendamento, confimeAgendamento, regulaca
 
     useEffect(() => {
 
-        validacaoDiaAgendamento(data)
+        //validacaoDiaAgendamento(data)
         
         if (data.presence) {
             setBorderService('border-start-success border-success')
