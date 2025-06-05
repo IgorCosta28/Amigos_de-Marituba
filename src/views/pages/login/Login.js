@@ -113,7 +113,7 @@ const Login = () => {
                   <div>
                     <CImage fluid src={'/logo.ico'} width={180} height={170} style={{ marginBottom: 3 }} />
                     <p>
-                      Projeto Amigos de Marituba, é uma projeto apoiado pela uzina da paz de marituba
+                      Projeto Amigos de Marituba, é um projeto solidário com intuito de ajudar e trazer mais cidadania para os cidadões de marituba.
                     </p>
                     <p>
                       Apoiador Igor Castro
