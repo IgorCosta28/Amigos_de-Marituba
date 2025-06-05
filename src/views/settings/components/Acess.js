@@ -30,11 +30,7 @@ const Acess = () => {
     }
 
     const handleRemoveService = async (id) => {
-        const { status } = await instanceAxios.delete(`/login/${id}`, {
-            headers: {
-                Authorization: `Bearer ${user.token}`
-            }
-        })
+        const { status } = await instanceAxios.delete(`/login/${id}`)
         if (status == 200) {
             setCreateAcess(!createAcess)
         }
@@ -42,14 +38,13 @@ const Acess = () => {
 
     const api = async () => {
         const { status, data } = await instanceAxios.get('/login')
-        const leader = await instanceAxios.get('/leader')
 
-        if (status == 200) {
+         if (status == 200) {
             setAcess(data)
 
         }
-
-
+        const leader = await instanceAxios.get('/leader')
+        
         if (leader.status == 200) {
             setLideres(leader.data)
         }
