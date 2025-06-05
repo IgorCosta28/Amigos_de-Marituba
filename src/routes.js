@@ -9,7 +9,7 @@ const Agendamentos = React.lazy(() => import('./views/servicos/consultas/Agendam
 const Settings = React.lazy(() => import('./views/settings/Settings'))
 
 const routes = [
-  // { path: '/dashboard', name: 'Home', element: Dashboard },
+  { path: '/dashboard', name: 'Home', element: Dashboard },
   { path: '/relatorios', name: 'Relatorios', element: Relatorios },
   { path: '/lideres', name: 'Lideres', element: Lideres },
   { path: '/cidadoes', name: 'Cidadões', element: Cidadoes },
