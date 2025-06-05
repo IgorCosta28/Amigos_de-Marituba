@@ -7,8 +7,13 @@ const TotalCidadoesLideres = () => {
     const [total, setTotal] = useState({})
 
     const api = async ()=>{
-        const {data} = await instanceAxios.get('/report/dashboard/total')
-        setTotal(data[0] ? data[0] : { citizen: 0, leader: 0 })
+        try{
+            const {data} = await instanceAxios.get('/report/dashboard/total')
+            setTotal(data[0] ? data[0] : { citizen: 0, leader: 0 })
+        }catch{
+            localStorage.clear()
+        }
+        
     }
 
     useEffect(()=>{
