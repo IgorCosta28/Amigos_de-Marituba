@@ -28,7 +28,7 @@ const Login = () => {
 
   const [isUser, setIsUser] = useState(false)
   const [isUserA, setIsUserA] = useState(false)
-  const [username, setUsername] = useState('')
+
 
   const { reset, handleSubmit, register } = useForm()
 
@@ -42,14 +42,14 @@ const Login = () => {
         const { data } = await instanceAxios.post('/session', dataSession)
         instanceAxios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`
         
-        setUsername(data.user.leader_name)
+
         setIsUserA(true)
 
         setTimeout(() => {
           userSession({ type: 'set', user: data })
           localStorage.setItem('@user',JSON.stringify(data))
           handleClose()
-        }, 2000)
+        }, 1500)
 
       } catch {
         setIsUser(true)
@@ -69,7 +69,7 @@ const Login = () => {
         severity={'warning'} message={'Usúario não registrado no sistema'} />
 
       <AlertRegistre open={isUserA} handleClose={handleClose}
-        severity={'success'} message={`Usúario Atenticado. Bem-Vindo ${username}`} />
+        severity={'success'} message={`Usúario Atenticado. Bem-Vindo!`} />
 
       <CContainer>
         <CRow className="justify-content-center">
