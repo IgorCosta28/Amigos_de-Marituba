@@ -10,19 +10,30 @@ import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { instanceAxios } from '../../config/api';
+import AlertRegistre from '../AlertRegistre/AlertRegistre';
+import { useState } from 'react';
 
 const AppHeaderDropdown = ({nomeUser}) => {
 
   const userSession = useDispatch()
   const navi = useNavigate()
 
+  const [isUser, setIsUser] = useState(false)
+  
+
   const handleLogout = async ()=>{
     const user = await instanceAxios.delete('/session/delete')
-
-    localStorage.removeItem('@user')
-    userSession({ type: 'set',user:undefined})
-    navi('/')
+    setIsUser(true)
+     setTimeout(() => {
+       localStorage.removeItem('@user')
+       userSession({ type: 'set',user:undefined})
+       navi('/')
+     },1500)
   }
+
+   const handleClose = () => {
+    setIsUser(false)
+  };
   
   return (
     <CDropdown  style={{display:'flex'}}>
@@ -31,6 +42,8 @@ const AppHeaderDropdown = ({nomeUser}) => {
         alignItems:'center',
         gap:1
       }}>
+         <AlertRegistre open={isUser} handleClose={handleClose} severity={'success'} message={'Saindo do Sistema. Até Logo'} />
+
           { nomeUser.user.level =='adm'?
             <AdminPanelSettingsIcon sx={{
               color:'#36db5f'
