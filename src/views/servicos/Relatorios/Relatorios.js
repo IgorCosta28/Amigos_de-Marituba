@@ -40,8 +40,8 @@ const Relatorios = () => {
 
   const api = async () => {
     const leaders = await instanceAxios.get(`/leader`)
-    const services = await instanceAxios.get(`/service`)
     setLideres(leaders.data)
+    const services = await instanceAxios.get(`/service`)
     setServicos(services.data)
   }
 
