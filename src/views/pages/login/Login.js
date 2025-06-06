@@ -27,6 +27,8 @@ const Login = () => {
   const userSession = useDispatch()
 
   const [isUser, setIsUser] = useState(false)
+  const [isUserA, setIsUserA] = useState(false)
+  const [username, setUsername] = useState('')
 
   const { reset, handleSubmit, register } = useForm()
 
@@ -39,9 +41,16 @@ const Login = () => {
       try {
         const { data } = await instanceAxios.post('/session', dataSession)
         instanceAxios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`
-        userSession({ type: 'set', user: data })
-        localStorage.setItem('@user',JSON.stringify(data))
-  
+        
+        setUsername(data.user.leader_name)
+        setIsUserA(true)
+
+        setTimeout(() => {
+          userSession({ type: 'set', user: data })
+          localStorage.setItem('@user',JSON.stringify(data))
+          handleClose()
+        }, 2000)
+
       } catch {
         setIsUser(true)
         setTimeout(() => {
@@ -58,6 +67,9 @@ const Login = () => {
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <AlertRegistre open={isUser} handleClose={handleClose}
         severity={'warning'} message={'Usúario não registrado no sistema'} />
+
+      <AlertRegistre open={isUserA} handleClose={handleClose}
+        severity={'success'} message={`Usúario Atenticado. Bem-Vindo ${username}`} />
 
       <CContainer>
         <CRow className="justify-content-center">
@@ -113,7 +125,7 @@ const Login = () => {
                   <div>
                     <CImage fluid src={'/logo.ico'} width={180} height={170} style={{ marginBottom: 3 }} />
                     <p>
-                      Projeto Amigos de Marituba, é um projeto solidário com intuito de ajudar e trazer mais cidadania para os cidadões de marituba.
+                      Projeto Amigos de Marituba, é uma projeto apoiado pela uzina da paz de marituba
                     </p>
                     <p>
                       Apoiador Igor Castro
