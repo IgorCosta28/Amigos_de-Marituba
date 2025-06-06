@@ -185,15 +185,6 @@ const Agendamentos = () => {
   const api = async () => {
     try{
 
-      const leaders = await instanceAxios.get(`/leader`)
-      const services = await instanceAxios.get(`/service`)
-      const scheduling = await instanceAxios.get(`/scheduling`)
-  
-      setMarcadoDia(scheduling.data)
-      setLideres(leaders.data)
-      setServicos(services.data)
-  
-  
       if (dayNow != '') {
         const data = await apiDayShow(formatDateN(dayNow))
         setDay(data)
@@ -202,6 +193,16 @@ const Agendamentos = () => {
         setDayNow(formatDateN(new Date()))
         setDay(data)
       }
+      
+      const scheduling = await instanceAxios.get(`/scheduling`)
+      setMarcadoDia(scheduling.data)
+
+      const services = await instanceAxios.get(`/service`)
+      setServicos(services.data)
+      
+      const leaders = await instanceAxios.get(`/leader`)
+      setLideres(leaders.data)
+  
     } catch {
       localStorage.clear()
     }
