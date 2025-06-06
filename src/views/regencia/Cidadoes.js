@@ -177,15 +177,15 @@ const handleEditer = (cidadao) => {
 }
 
 const handleHistorico = async (cidadao) => {
+  setTitleModal(cidadao.name)
+  setVisibleModalHistory(true)
+  setMetricasCollapse(false)
+  const { data } = await instanceAxios.get(`/report/history/${cidadao.id}`)
+  setAgendamentos(data)
 
   const services = await instanceAxios.get(`/service`)
-  const { data } = await instanceAxios.get(`/report/history/${cidadao.id}`)
-
-  setMetricasCollapse(false)
   setServices(services.data)
-  setVisibleModalHistory(true)
-  setTitleModal(cidadao.name)
-  setAgendamentos(data)
+
 }
 
 const handleButtonSalveModal = () => { document.getElementById('submitbtn').click() }
