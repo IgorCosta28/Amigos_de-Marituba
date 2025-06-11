@@ -242,7 +242,7 @@ const Relatorios = () => {
         textAlign:'end',
         marginBottom:3
       }} >
-        // onClick={downloadPDF} 
+ 
         <CButton color='primary' >
           Baixar Relatorio
         </CButton>
