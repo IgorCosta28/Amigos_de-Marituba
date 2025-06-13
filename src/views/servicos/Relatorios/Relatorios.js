@@ -38,17 +38,19 @@ const Relatorios = () => {
     reset({})
   }
 
+  const downloadPDF = async () =>{
+    const {data} = await instanceAxios.get(`/report/download`)
+    console.log(data);
+    
+    window.open(`${instanceAxios.getUri()}${data.file}`);   
+  }
+
   const api = async () => {
     const leaders = await instanceAxios.get(`/leader`)
     setLideres(leaders.data)
     const services = await instanceAxios.get(`/service`)
     setServicos(services.data)
   }
-
-  // const downloadPDF = async () =>{
-  //   const {data} = await instanceAxios.get(`/report/download`)
-  //   window.open(`${instanceAxios.getUri()}${data.file}`);   
-  // }
 
   useEffect(() => {
     api()
@@ -242,8 +244,7 @@ const Relatorios = () => {
         textAlign:'end',
         marginBottom:3
       }} >
- 
-        <CButton color='primary' >
+        <CButton color='primary' onClick={downloadPDF} >
           Baixar Relatorio
         </CButton>
       </Box>
