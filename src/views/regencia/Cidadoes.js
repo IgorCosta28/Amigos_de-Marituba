@@ -416,6 +416,9 @@ return (
               floatingClassName="mb-3"
               floatingLabel="Nome"
               placeholder="nome"
+              style={{
+                textTransform:'uppercase'
+              }}
               {...register('name', { required: true })}
 
             />
