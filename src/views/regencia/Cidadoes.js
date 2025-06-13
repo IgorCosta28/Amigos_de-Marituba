@@ -436,7 +436,7 @@ return (
               floatingClassName="mb-3"
               floatingLabel="RG"
               placeholder="rg"
-              {...register('rg', { required: true })}
+              {...register('rg')}
 
             />
 
