@@ -233,7 +233,7 @@ const Relatorios = () => {
             
           ) :
           (
-            <h3 style={{textAlign:'center', opacity:'0.5'}} > Sem Dados Solcitados </h3>
+            <h3 style={{textAlign:'center', opacity:'0.5'}} > Sem Dados Solicitados </h3>
           )
         }
       </Box>
