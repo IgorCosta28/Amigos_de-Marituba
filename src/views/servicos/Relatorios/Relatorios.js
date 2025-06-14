@@ -35,7 +35,6 @@ const Relatorios = () => {
       
     }
     setSolicitado(true)
-    reset({})
   }
 
   const downloadPDF = async () =>{
