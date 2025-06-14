@@ -14,6 +14,8 @@ const Relatorios = () => {
   const [agendamentos, setAgendamentos] = useState([])
   const [servicos, setServicos] = useState([])
   const [solicitado, setSolicitado] = useState(false)
+  const [dis,setDis] = useState(true)
+
 
   const onsubmit = async (data) => {
     
@@ -24,6 +26,8 @@ const Relatorios = () => {
     if (date_end == '' && date_start == "" && service_id == '' && presence == '' && leader_id == ''){
       repot_scheduling = await instanceAxios.get(`/report`)
       setAgendamentos(repot_scheduling.data)
+      setDis(false)
+
     }else {
       repot_scheduling = await instanceAxios.get(`/report/show`,
         {
@@ -32,6 +36,8 @@ const Relatorios = () => {
       )
 
       setAgendamentos(repot_scheduling.data)
+      setDis(false)
+
       
     }
     setSolicitado(true)
@@ -39,7 +45,6 @@ const Relatorios = () => {
 
   const downloadPDF = async () =>{
     const {data} = await instanceAxios.get(`/report/download`)
-    console.log(data);
     
     window.open(`${instanceAxios.getUri()}${data.file}`);   
   }
@@ -243,7 +248,7 @@ const Relatorios = () => {
         textAlign:'end',
         marginBottom:3
       }} >
-        <CButton color='primary' onClick={downloadPDF} >
+        <CButton color='primary' onClick={downloadPDF} disabled={dis} >
           Baixar Relatorio
         </CButton>
       </Box>
